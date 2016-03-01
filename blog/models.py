@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.flatpages.models import FlatPage as FlatPageOld
 
 class FlatPage(FlatPageOld):
-    photo = models.ImageField(upload_to='images')
+    photo = models.ImageField(upload_to='new/')
 
     def publish(self):
         self.save()
@@ -14,7 +14,8 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     text = models.TextField()
-    images = models.ImageField(upload_to='images', blank=True)
+    menu = models.CharField(max_length=200)
+    images = models.ImageField(upload_to='new', blank=True)
 
     def publish(self):
         self.save()
